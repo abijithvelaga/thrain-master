@@ -75,12 +75,12 @@ class AESCipher(object):
         """
         message = message.encode()
         raw = pad(message)
-        cipher = AES.new(self.key, AES.MODE_CBC, iv())
+        cipher = AES.new(self.key.encode('utf-8'), AES.MODE_CBC, iv().encode('utf-8'))
         enc = cipher.encrypt(raw)
         return base64.b64encode(enc).decode('utf-8')
 
     def decrypt(self, enc):
         enc = base64.b64decode(enc)
-        cipher = AES.new(self.key, AES.MODE_CBC, iv())
+        cipher = AES.new(self.key.encode('utf-8'), AES.MODE_CBC, iv().encode('utf-8'))
         dec = cipher.decrypt(enc)
         return unpad(dec).decode('utf-8')
