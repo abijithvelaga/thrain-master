@@ -1,8 +1,9 @@
-import Tkinter
-from Tkinter import *
+import tkinter
+from tkinter import *
 import webbrowser
 import thrain
-import Tkinter, Tkconstants, tkFileDialog
+from tkinter import filedialog
+
 
 '''
 -----------------------------------------------------------------
@@ -10,18 +11,18 @@ OPEN FILE AND DIRECTORY
 -----------------------------------------------------------------
 '''
 def openfileEnc():
-	filename = tkFileDialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	filename = filedialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileToEncrptyEntryUpdate(filename)
 
 def opendirectoryEnc():
-	directory = tkFileDialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
+	directory = filedialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
 	destinationFolderEncEntryUpdate(directory)
 
 def openfileDec():
-	filename = tkFileDialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	filename = filedialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileToDecryptEntryUpdate(filename)	
 def opendirectoryDec():
-	directory = tkFileDialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
+	directory = filedialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
 	destinationFolderDecEntryUpdate(directory)
 '''
 -----------------------------------------------------------------
@@ -98,7 +99,7 @@ def main():
 
 	# Attributes of main dialog box
 	global form
-	form = Tkinter.Tk()
+	form = tkinter.Tk()
 	form.wm_title('thrain')
 	'''
 	-------------------------------------------------------------
@@ -172,7 +173,7 @@ def main():
 	privateKeyOfSenderEntry = Entry(EncryptStep)
 	privateKeyOfSenderEntry.grid(row=2, column=7, pady=2)
 	#-------------------------Encrypt Button---------------------
-	EncryptBTN = Tkinter.Button(EncryptStep, text="Encrypt   ", command=encryptor)
+	EncryptBTN = tkinter.Button(EncryptStep, text="Encrypt   ", command=encryptor)
 	EncryptBTN.grid(row=2, column=8, sticky='W', padx=5, pady=2)
 	'''
 	-------------------------------------------------------------
@@ -216,34 +217,8 @@ def main():
 	privateKeyOfRecieverEntry = Entry(DecryptStep)
 	privateKeyOfRecieverEntry.grid(row=2, column=7, pady=2)
 	#-------------------------Decrypt Button---------------------
-	DecryptBTN = Tkinter.Button(DecryptStep, text="Decrypt   ", command = decryptor)
+	DecryptBTN = tkinter.Button(DecryptStep, text="Decrypt   ", command = decryptor)
 	DecryptBTN.grid(row=2, column=8, sticky='W', padx=5, pady=2)
-	'''
-	-------------------------------------------------------------
-	ABOUTUS-SECTION
-	-------------------------------------------------------------
-	'''	
-	intro = Label(Aboutus, text="\nthrain - A secure file transfer system")
-	intro.grid(row=0)
-	text1 = Label(Aboutus, text="\nThrain enables its users to securely\ntransfer files in 'txt' format without\nany third party eavesdropping\n")
-	text1.grid(row=1)
-	githublink = Label(Aboutus, text="Know More", fg="blue", cursor="hand2")
-	githublink.bind("<Button-1>", opengithub)
-	githublink.grid(row=2)
-	# Add more content and remove padding newline accordingly
-	padding = Label(Aboutus, text="\n\n\n\n")
-	padding.grid(row=3)
-	text2 = Label(Aboutus, text="Contributed by: ")
-	text2.grid(row=4, sticky='S')
-	hardiksocial = Label(Aboutus, text="Hardik Gaur")
-	hardiksocial.bind("<Button-1>",openhardiklinkedin)
-	hardiksocial.grid(row=5, sticky='SW',padx = 8)
-	text3 = Label(Aboutus, text="|")
-	text3.grid(row=5)
-	parthsocial = Label(Aboutus, text="Parth Trehan")
-	parthsocial.bind("<Button-1>",openparthlinkedin)
-	parthsocial.grid(row=5, sticky='SE',padx = 8)
-
 
 	form.mainloop()
 
