@@ -22,7 +22,7 @@ def encrypt(filename,directory,public_key,private_key):
 	print(dummy)
 	str = binascii.hexlify(dummy)
 	key = str[0:32]
-	file_obj = open(os.path.join(directory,filename),"r")
+	file_obj = open(filename,"r")
 	t = time.time()
 	#list,str = ENCDEC.shamirs_split(file_obj)
 	msg1 = ENCDEC.AESCipher(key).encrypt(file_obj.read())
