@@ -43,8 +43,7 @@ def decrypt(filename,directory,public_key,private_key):
 	key = str[0:32]
 	revised_filename = os.path.join(directory,filename)
 	file_obj = open(revised_filename,"r")
-	msg = file_obj.read()
-	text = ENCDEC.AESCipher(key).decrypt(msg)
+	text = ENCDEC.AESCipher(key).decrypt(file_obj.read())
 	outputFilename = os.path.join(directory,"DecodedFile.txt")
 	file_obj = open(outputFilename,"w")
 	file_obj.write(text)
