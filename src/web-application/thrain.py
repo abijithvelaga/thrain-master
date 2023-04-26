@@ -17,7 +17,9 @@ def encrypt(filename,directory,public_key,private_key):
 
 	key = DH.generate_secret(int(private_key), int(public_key))
 	print(key)
-	str = key.encode().hex()
+	dummy = key.encode("utf-8")
+	print(dummy)
+	str = dummy.hex()
 	key = str[0:32]
 	file_obj = open(os.path.join(directory,filename),"r")
 	t = time.time()
