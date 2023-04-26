@@ -17,23 +17,18 @@ global prime_
 def encrypt(filename,directory,public_key,private_key):
 
 	key = DH.generate_secret(int(private_key), int(public_key))
-	print(key)
 	dummy = key.encode("utf-8")
-	print(dummy)
 	str = binascii.hexlify(dummy)
 	key = str[0:32]
-	file_obj = open(filename,"r")
+	revised_filename = os.path.join(directory,filename)
+	file_obj = open(revised_filename,"r")
 	t = time.time()
-	#list,str = ENCDEC.shamirs_split(file_obj)
 	msg1 = ENCDEC.AESCipher(key).encrypt(file_obj.read())
-	#msg2 = ENCDEC.AESCipher(key).encrypt(str)
 	s = time.time()
-	#Exchange this with public key
 	outputFilename = os.path.join(directory,key[16:]+".txt")
 	file_obj = open(outputFilename,'w')
 	file_obj.write(msg1)
-
-	os.remove(os.path.join(directory,filename))
+	os.remove(revised_filename)
 
 '''
 -----------------------------------------------------------------

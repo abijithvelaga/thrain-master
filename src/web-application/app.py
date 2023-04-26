@@ -127,7 +127,8 @@ def upload_file():
 			public_key = request.form['publicKey']
 			private_key = request.form['privateKey']
 			filename = secure_filename(file.filename)
-			thrain.encrypt(filename,app.config['UPLOAD_FOLDER'],public_key,private_key)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+			thrain.encrypt(file.filename,app.config['UPLOAD_FOLDER'],public_key,private_key)
 			return post_upload_redirect()
 		return 'Invalid File Format !'
 
