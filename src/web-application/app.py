@@ -181,7 +181,7 @@ def register_user():
 	return render_template('key-display.html',privatekey=str(privatekey))
 
 
-@app.route('/decryptFile', methods = ['GET', 'POST'])
+@app.route('/decryptFile', methods=['GET', 'POST'])
 def decryptor():
 	if request.method == 'POST':
 		# check if the post request has the file part
@@ -195,7 +195,7 @@ def decryptor():
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
 			thrain.decrypt(file.filename,app.config['UPLOAD_FOLDER'],public_key,private_key)
-			return post_upload_redirect()
+			return "Success"
 		return 'Invalid File Format !'
 
 if __name__ == '__main__':
