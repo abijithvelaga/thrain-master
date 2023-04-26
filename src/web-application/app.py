@@ -76,6 +76,7 @@ def download_public_key(username):
 
 @app.route('/file-directory/retrieve/file/<filename>')
 def download_file(filename):
+	print(filename)
 	filepath = UPLOAD_FOLDER+filename
 	if(os.path.isfile(filepath)):
 		return send_file(filepath, download_name=filename,as_attachment=True)
