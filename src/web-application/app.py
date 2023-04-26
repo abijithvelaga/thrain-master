@@ -193,6 +193,7 @@ def decryptor():
 			public_key = request.form['publicKey']
 			private_key = request.form['privateKey']
 			filename = secure_filename(file.filename)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
 			thrain.decrypt(file.filename,app.config['UPLOAD_FOLDER'],public_key,private_key)
 			return post_upload_redirect()
 		return 'Invalid File Format !'
