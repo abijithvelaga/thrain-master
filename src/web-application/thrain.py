@@ -16,7 +16,7 @@ global prime_
 def encrypt(filename,directory,public_key,private_key):
 
 	key = DH.generate_secret(int(private_key), int(public_key))
-	str = key.encode('utf-8').hex()
+	str = key.hex()
 	key = str[0:32]
 	file_obj = open(os.path.join(directory,filename),"r")
 	t = time.time()
@@ -39,7 +39,7 @@ def encrypt(filename,directory,public_key,private_key):
 def decrypt(filename,directory,public_key,private_key):
 	
 	key = DH.generate_secret(int(private_key), int(public_key))
-	str = key.encode().hex()
+	str = key.encode('utf-8').hex()
 	key = str[0:32]
 	file_obj = open(os.path.join(directory,filename),"r")
 	msg = file_obj.read()
